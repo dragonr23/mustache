@@ -1,0 +1,64 @@
+@keyframes  wink{
+  0%  {
+    height: inherit;
+    width: inherit;
+    top: 150px;
+  }
+
+  50% {
+    top: 190px;
+    height: 0px;
+    width: 50px;
+  }
+  100% {
+    height: inherit;
+    width: inherit;
+    top: 150px;
+  }
+}
+
+
+
+
+
+.eyes {
+  position:absolute;
+  top:10px;
+  left:10px;
+
+  height: 80px;
+  width: 50px;
+  color: black;
+  border-radius: 100%;
+  box-shadow:
+    250px 150px 0 0 currentcolor;
+}
+
+.eyes::before {
+  content: "";
+/* no background-color so that we only get the border */
+  position: absolute;
+  top: 120px;
+  left: 390px;
+  height: 140px;
+  width: 140px;
+  border-radius: 100%;
+  border:5px solid gold;
+
+}
+
+.eyes::after {
+  content: "";
+  top: 150px;
+  left: 440px;
+  /* you need to assign a position or nothing will happen */
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border-radius: 100%;
+  background-color: currentcolor;
+
+  animation-name: wink;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}

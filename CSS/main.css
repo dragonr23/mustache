@@ -1,0 +1,96 @@
+/* the % is a time thing */
+
+@import './eyes.css';
+
+@keyframes  moveleftstache{
+  0%  {
+    transform: rotate(-60deg);
+  }
+
+  50% {
+    transform: rotate(-40deg);
+  }
+  100% {
+    transform: rotate(-60deg);
+  }
+}
+
+@keyframes moverightstache {
+
+  0%  {
+    transform: rotate(60deg);
+  }
+
+  50% {
+    transform: rotate(40deg);
+  }
+  100% {
+    transform: rotate(60deg);
+  }
+
+}
+
+
+
+.mustache {
+  height: 180px;
+  width: 180px;
+  color: black;
+  /* we are using current color so that we can change all of the lines at once. The color is inherited. */
+  /* background-color: currentcolor; */
+  position: absolute;
+  top: 50px;
+  left:100px;
+  border-radius: 50%;
+  box-shadow:
+    /* x- offset y-offset blur spread color */
+    150px 240px 0 0 currentcolor,
+    300px 240px 0 0 currentcolor;
+}
+
+
+/* there are three stages to every element: before, during, and after... you can render more elements and alter the way something looks. before will be the left stash and after will be the right stach  */
+
+.mustache::before {
+  content: ""; /* required to show element*/
+  height: inherit;
+  width: inherit;
+  /* background-color: red; */
+
+  /* absolute allows you to move it around from the parents container */
+  position: absolute;
+  top: 90px;
+  left: 5px;
+  border-bottom: 170px solid black;
+  /* starts at top left */
+  /* when you rotate or scale an object it is considered a transform... you can also rotate in 3d or skew it... lots of things can be done with transform*/
+  border-radius: 0 0 0 100%;
+  transform: rotate(-60deg);
+  transform-origin: right 180px;
+  animation-name: moveleftstache;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+
+.mustache::after {
+  content: ""; /* required to show element*/
+  height: inherit;
+  width: inherit;
+  /* background-color: red; */
+
+  /* absolute allows you to move it around from the parents container */
+  position: absolute;
+  top: 90px;
+  left: 445px;
+  border-bottom:170px solid black;
+  /* starts at top left */
+  /* when you rotate or scale an object it is considered a transform... you can also rotate in 3d or skew it... lots of things can be done with transform*/
+  border-radius: 0 0 100% 0%;
+  transform: rotate(60deg);
+  transform-origin: left 180px;
+
+  animation-name: moverightstache;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
